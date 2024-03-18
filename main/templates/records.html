@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+    <h1 class="header mb-24">Customer Relation Management</h1>
+    {% if messages%}
+    {% for m in messages %}
+    <div class="message">{{ m }}</div>
+    {% endfor %}
+    {% endif %}
+    {% if user.is_authenticated %} 
+{% else %} 
+<div class="card-cont">
+    <!-- Card -->
+    <div class="card">
+            <div class="card-img">
+                <img src="{% static 'images/img-1.png' %}" alt=“image”>
+            </div>
+            <div class="card-right">
+                
+                <div class="card-top">
+                    <h1 class="card-header">
+                        Login Here
+                    </h1>
+                </div>
+                <div class="card-body">
+                    
+            </div>
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+{% endif %} 
+{% endblock %}

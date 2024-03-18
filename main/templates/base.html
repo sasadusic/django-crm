@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django and mysql crm app</title>
+             <!-- Link to css -->
+             <link rel="stylesheet" href="{% static 'css/style.css' %}">
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
+             <link rel="preconnect" href="https://fonts.googleapis.com">
+             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+             <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="side" id="side">
+        <div class="side-up">
+
+            <div id="logo" class="logo"><i class="fa-solid fa-people-roof"></i><a href="index.html">
+                Dusic CRM
+            </a>
+            <i class="fa fa-bars" aria-hidden="true"></i></div>
+                <nav class="navbar">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+            <a class="nav-link" href="#"><i class="fa fa-address-book" aria-hidden="true"></i>
+                <p>
+                    Orders
+                </p>
+            </a>
+            <a class="nav-link" href="#"><i class="fa fa-leaf" aria-hidden="true"></i>
+                <p>
+                    Products
+                </p>
+            </a>
+            <a class="nav-link" href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                <p>
+                    Restaurands
+                </p>
+            </a>
+            <a class="nav-link" href="#"><i class="fa fa-car" aria-hidden="true"></i>
+                <p>
+                    Drivers
+                </p>
+            </a>
+        </nav>
+    </div>
+        <div class="profile-info">
+            {% if user.is_authenticated %} 
+            <a class="send" href="{% url 'logout' %}"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                Logout</a>
+            <a class="profile" href="#">
+                <div class="profile-img"></div>   
+                <p>{{ request.user.username.title }}</p>
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+            {% else %} 
+            <a class="done" href="{% url 'register' %}">Register</a>
+            <a class="send" href="{% url 'index' %}"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+                Login</a>
+                <a class="profile" href="#">
+                    <div class="profile-img"></div>
+                    <p>Guest User</p>
+                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                </a>
+                {% endif %} 
+        </div>
+    </div>
+    <div id="home">
+        
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+</html>
