@@ -4,12 +4,12 @@
 {% block body %}
     <h1 class="header mb-24">Customer Relation Management</h1>
     {% if messages%}
-    {% for m in messages %}
-    <div class="message">{{ m }}</div>
-    {% endfor %}
+    <div class="card-cont">
+        {% for m in messages %}
+        <div class="message">{{ m }}</div>
+        {% endfor %}
+    </div>
     {% endif %}
-    {% if user.is_authenticated %} 
-{% else %} 
 <div class="card-cont">
     <!-- Card -->
     <div class="card">
@@ -30,5 +30,4 @@
     </div>
     <!-- Card -->
 </div>
-{% endif %} 
 {% endblock %}

@@ -16,20 +16,20 @@
     <div class="side" id="side">
         <div class="side-up">
 
-            <div id="logo" class="logo"><i class="fa-solid fa-people-roof"></i><a href="index.html">
+            <div id="logo" class="logo"><i class="fa-solid fa-people-roof"></i><a href="{% url 'index' %}">
                 Dusic CRM
             </a>
             <i class="fa fa-bars" aria-hidden="true"></i></div>
                 <nav class="navbar">
-                    <a class="nav-link" href="{% url 'records' %}" >
+                    <a class="nav-link" href="{% url 'index' %}" >
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                         <p>
-                            Records
+                            Home
                         </p>
                     </a>
-            <a class="nav-link" href="#"><i class="fa fa-address-book" aria-hidden="true"></i>
+            <a class="nav-link" href="{% url 'records' %}"><i class="fa fa-address-book" aria-hidden="true"></i>
                 <p>
-                    Orders
+                    Records
                 </p>
             </a>
             <a class="nav-link" href="#"><i class="fa fa-leaf" aria-hidden="true"></i>
@@ -70,10 +70,9 @@
                 {% endif %} 
         </div>
     </div>
-    <div id="home">
-        
+    <main class="home" id="home">
         {% block body %}
         {% endblock %}
-    </div>
+    </main>
 </body>
 </html>

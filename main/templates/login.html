@@ -2,11 +2,13 @@
 {% load static %}
 
 {% block body %}
-    <h1 class="header mb-24">Customer Relation Management</h1>
+    <h1 class="header p-24">Customer Relation Management</h1>
     {% if messages%}
-    {% for m in messages %}
-    <div class="message">{{ m }}</div>
-    {% endfor %}
+    <div class="card-cont">
+        {% for m in messages %}
+        <div class="message">{{ m }}</div>
+        {% endfor %}
+    </div>
     {% endif %}
     
 <div class="card-cont">
