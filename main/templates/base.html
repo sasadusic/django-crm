@@ -53,7 +53,7 @@
             {% if user.is_authenticated %} 
             <a class="send" href="{% url 'logout' %}"><i class="fa fa-paper-plane" aria-hidden="true"></i>
                 Logout</a>
-            <a class="profile" href="#">
+            <a class="profile" href="{% url 'profile' %}">
                 <div class="profile-img"></div>   
                 <p>{{ request.user.username.title }}</p>
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>

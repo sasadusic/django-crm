@@ -394,3 +394,55 @@
     border-radius: 8px;
     margin-bottom: var(--space-mid);
 }
+/* Records */
+.r-card-cont{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: 60px;
+    padding: var(--space-mid);
+}
+.r-card{
+    flex:1;
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    /* overflow: hidden; */
+    margin-bottom: 32px;
+    min-width: 180px;
+    max-width: 400px;
+    cursor: pointer;
+    padding: var(--space-mid);
+}
+.r-card-top{
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+.r-card-body{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.r-card-footer{
+    position: relative;
+    width: 100%;
+    /* background: #000; */
+    display: flex;
+    flex: 1;
+    gap: 4px;
+    color: var(--text);
+}
+.r-footer-left, .loc, .settings{
+    border: 1px solid var(--bg-light);
+    padding: 8px;
+    border-radius: 3px;
+}
+.r-footer-left{
+    padding-right: auto;
+    flex: 1;
+}
+/* Records */

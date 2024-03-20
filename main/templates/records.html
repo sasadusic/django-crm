@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block body %}
-    <h1 class="header mb-24">Customer Relation Management</h1>
+    <h1 class="header p-24">Customer Relation Management</h1>
     {% if messages%}
     <div class="card-cont">
         {% for m in messages %}
@@ -10,24 +10,30 @@
         {% endfor %}
     </div>
     {% endif %}
-<div class="card-cont">
+<div class="r-card-cont">
+    {% for r in records %}
     <!-- Card -->
-    <div class="card">
-            <div class="card-img">
-                <img src="{% static 'images/img-1.png' %}" alt=“image”>
+    <div class="r-card">
+            <div class="r-card-top">
+                <h2 class="card-header">
+                    {{ r.first_name }}
+                </h2>
             </div>
-            <div class="card-right">
-                
-                <div class="card-top">
-                    <h1 class="card-header">
-                        All Records
-                    </h1>
-                </div>
-                <div class="card-body">
-                    
+        <div class="r-card-body">
+            <p class="phar big mb-12">350gr</p>
+            <p class="phar mb-12">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+        </div>
+        <div class="r-card-footer">
+            <div class="r-footer-left">
+                $35.99
+            </div>
+            <div class="loc"><i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="settings"><i class="fa-solid fa-gear"></i>
             </div>
         </div>
-    </div>
+</div>
     <!-- Card -->
+    {% endfor %}
 </div>
 {% endblock %}
