@@ -14,11 +14,11 @@
 
         <div id="home-over" class="home-over"></div>
         <div class="home-left">
-            <h1 class="home-header">Dusic<br>Customer Relation Menagement</h1>
-            <p class="home-phar">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi consequuntur officiis, dolores quod aliquam aliquid animi fuga perferendis. Voluptatibus, molestiae?</p>
+            <h1 class="home-header">{{ request.user.first_name }} {{ request.user.last_name }}</h1>
+            <p class="home-phar">Username: {{ request.user.username}}</p>
+            <p class="home-phar">Email: {{ request.user.email}}</p>
             <div class="btn-cont">
-                <button class="btn btn-color">Contact Us</button>
-                <button class="btn see-offer">See our Offer</button>
+                <button class="btn btn-color">Profile Settings</button>
             </div>
     </div>
     <div class="home-right">

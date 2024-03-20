@@ -411,7 +411,7 @@
     border-radius: 10px;
     /* overflow: hidden; */
     margin-bottom: 32px;
-    min-width: 180px;
+    min-width: 280px;
     max-width: 400px;
     cursor: pointer;
     padding: var(--space-mid);
