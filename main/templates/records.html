@@ -13,15 +13,22 @@
 <div class="r-card-cont">
     {% for r in records %}
     <!-- Card -->
-    <div class="r-card">
+    <a href="{% url 'record_details' r.id %}">
+
+        <div class="r-card">
             <div class="r-card-top">
                 <h2 class="card-header">
-                    {{ r.first_name }}
+                    {{ r.first_name }} {{ r.last_name }}
                 </h2>
             </div>
         <div class="r-card-body">
-            <p class="phar big mb-12">350gr</p>
-            <p class="phar mb-12">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+            <p class="phar big mb-12">Email: {{ r.email }}</p>
+            <p class="phar big mb-12">Phone: {{ r.phone }}</p>
+            <p class="phar big mb-12">Address: {{ r.address }}</p>
+            <p class="phar big mb-12">City: {{ r.city }}</p>
+            <p class="phar big mb-12">State: {{ r.state }}</p>
+            <p class="phar big mb-12">Zipcode: {{ r.zipcode }}</p>
+            <p class="phar big mb-12">Created at: {{ r.created_at }}</p>
         </div>
         <div class="r-card-footer">
             <div class="r-footer-left">
@@ -32,7 +39,8 @@
             <div class="settings"><i class="fa-solid fa-gear"></i>
             </div>
         </div>
-</div>
+    </div>
+</a>
     <!-- Card -->
     {% endfor %}
 </div>

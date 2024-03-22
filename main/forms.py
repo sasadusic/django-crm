@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django import forms
+from .models import Record
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label='Email', widget=forms.TextInput(attrs={'class': 'input username', 'placeholder': 'Email'})) 
@@ -26,3 +27,19 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['class'] = 'input username'
         self.fields['password2'].widget.attrs['placeholder'] = '********'
         self.fields['password2'].widget.attrs['label'] = 'Confirm Password'
+
+class NewRecord(forms.ModelForm):
+    class Meta:
+        model = Record
+        fields = '__all__'
+
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'input'}),
+            'last_name': forms.TextInput(attrs={'class': 'input'}),
+            'email': forms.EmailInput(attrs={'class': 'input'}),
+            'phone': forms.TextInput(attrs={'class': 'input'}),
+            'address': forms.TextInput(attrs={'class': 'input'}),
+            'city': forms.TextInput(attrs={'class': 'input'}),
+            'state': forms.TextInput(attrs={'class': 'input'}),
+            'zipcode': forms.TextInput(attrs={'class': 'input'}),
+        }

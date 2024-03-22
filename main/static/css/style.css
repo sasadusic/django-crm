@@ -1,5 +1,7 @@
 :root{
     --main: #4a69bd;
+    --varnning: #fa983a;
+    --danger: #e55039;
     --main-trans-01: hsla(224, 47%, 52%, .1);
     --main-trans-02: hsla(224, 47%, 52%, .2);
     --main-trans-03: hsla(224, 47%, 52%, 0.3);
@@ -296,6 +298,16 @@
     background: var(--main);
     color: white;
 }
+.btn-warnning{
+    background: var(--varnning);
+    color: white;
+    
+}
+.btn-danger{
+    background: var(--danger);
+    color: white;
+
+}
 .card-cont{
     padding: var(--space-mid);
 }
@@ -398,33 +410,28 @@
 .r-card-cont{
     position: relative;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-sm);
-    margin-top: 60px;
+    margin-top: 30px;
     padding: var(--space-mid);
 }
 .r-card{
-    flex:1;
     position: relative;
     background: #fff;
     border-radius: 10px;
-    /* overflow: hidden; */
-    min-width: 280px;
-    max-width: 400px;
     cursor: pointer;
     padding: var(--space-mid);
 }
 .r-card-top{
     position: relative;
     width: 100%;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-mid);
     text-align: center;
 }
 .r-card-body{
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 .r-card-footer{
     position: relative;

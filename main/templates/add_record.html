@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+    <h1 class="header p-24">Customer Relation Management</h1>
+    {% if messages%}
+    <div class="card-cont">
+        {% for m in messages %}
+        <div class="message">{{ m }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+<div class="card-cont">
+    <!-- Card -->
+    <div class="card">
+            <div class="card-img">
+                <img src="{% static 'images/img-1.png' %}" alt=“image”>
+            </div>
+            <div class="card-right">
+                
+                <div class="card-top">
+                    <h1 class="card-header">
+                        Add New Record
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'add_record' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    <button type="submit" id="submit" class="btn btn-color">Add Record</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Card -->
+</div>
+{% endblock %}
