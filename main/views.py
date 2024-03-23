@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import SignUpForm, UpdateProfileForm
+from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from .models import Record
 from .forms import NewRecord
 
@@ -123,3 +123,22 @@ def  update_profile(request):
     
     context={"form":form}
     return render(request,'update_profile.html',context)    
+
+@login_required(login_url="login")
+def change_password(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(user=current_user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            # Logout the user first to get rid of session cookie
+            logout(request)
+            messages.warning(request, "Password changed successfully! Please login again.")
+            return redirect('logout')
+        else:
+            messages.error(request, "Error in password reset. Please try again.")
+            
+    else:
+        form = CustomPasswordChangeForm(user=current_user)
+        
+    return render(request, 'change_password.html', {'form': form})

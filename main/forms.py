@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django import forms
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import Record
 
 class SignUpForm(UserCreationForm):
@@ -35,7 +36,7 @@ class UpdateProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = {'username', 'first_name', 'last_name', 'email', 'password'}
+        fields = {'username', 'first_name', 'last_name', 'email'}
 
     def __init__(self, *args, **kwargs):
         super(UpdateProfileForm, self).__init__(*args, **kwargs)
@@ -44,11 +45,17 @@ class UpdateProfileForm(forms.ModelForm):
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
         self.fields['username'].widget.attrs['label'] = 'Username'
 
-        self.fields['password'].widget.attrs['class'] = 'input username'
-        self.fields['password'].widget.attrs['placeholder'] = '********'
-        self.fields['password'].widget.attrs['label'] = 'Password'
+class CustomPasswordChangeForm(PasswordChangeForm):
+    """
+    A custom form for changing a user's password.
+    Inherits from Django's built-in PasswordChangeForm.
+    """
 
-
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["old_password"].widget.attrs.update({"class": "input"})
+        self.fields["new_password1"].widget.attrs.update({"class": "input"})
+        self.fields["new_password2"].widget.attrs.update({"class": "input"})
 
 class NewRecord(forms.ModelForm):
     class Meta:
