@@ -282,6 +282,7 @@
 .bold{
     font-weight: 700;
     margin-right: var(--space-mid);
+    width: 300px;
 }
 .btn-cont{
     background: transparent;
