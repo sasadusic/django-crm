@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import SignUpForm
+from .forms import SignUpForm, UpdateProfileForm
 from .models import Record
 from .forms import NewRecord
 
@@ -106,3 +106,20 @@ def register_user(request):
 @login_required(login_url="login")
 def profile(request):
     return render(request, 'profile.html')
+
+@login_required(login_url="login")
+def  update_profile(request):
+    current_user = request.user
+    if request.method=='POST':
+        form = UpdateProfileForm(request.POST, instance=current_user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your Profile has been updated successfully!")
+            return redirect("profile")
+        else:
+            messages.error(request,"Please correct the error below.")
+    else:
+        form = UpdateProfileForm(instance=current_user)
+    
+    context={"form":form}
+    return render(request,'update_profile.html',context)    
