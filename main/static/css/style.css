@@ -56,6 +56,9 @@
 .p-12{
     padding: var(--space-sm);
 }
+.inline{
+    display: inline-block;
+}
 #side{
     position: fixed;
     left: 0;

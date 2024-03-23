@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import SignUpForm, UpdateProfileForm, CustomPasswordChangeForm
 from .models import Record
 from .forms import NewRecord
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 @login_required(login_url='login')
@@ -142,3 +143,16 @@ def change_password(request):
         form = CustomPasswordChangeForm(user=current_user)
         
     return render(request, 'change_password.html', {'form': form})
+
+User = get_user_model()
+
+@login_required(login_url="login")
+def delete_profile(request):
+    """
+    View function for deleting a user's profile.
+    Only accessible to authenticated users.
+    """
+    if request.method == "POST":
+        user = User.objects.get(username=request.user)
+        user.delete()
+        return redirect("index")
